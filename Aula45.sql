@@ -54,3 +54,49 @@ INSERT INTO TELEFONE VALUES(NULL,'celular','99766676',3);
 INSERT INTO TELEFONE VALUES(NULL,'comercial','66687899',1);
 INSERT INTO TELEFONE VALUES(NULL,'residencial','89986668',5);
 INSERT INTO TELEFONE VALUES(NULL,'celular','88687909',2);
+
+/*Seleção, Projeção e Junção*/
+select now() as data_atual;
+
+select 2+2 as soma;
+
+select 2+2 as soma, nome, now() from cliente;
+/*Projeção -> É tudo o que queremos ver na tela*/
+
+/*Seleção -> É um subconjunto do conjunto total de registros de uma tabela
+A clausula de seleção é o where*/
+select nome, sexo, email from cliente where sexo = 'F';
+/*Select é a projeção where é a seleção*/
+
+select numero from telefone where tipo = 'celular';
+
+
+/*Junção -> Join*/
+
+Select nome, email, idcliente from cliente;
+Select id_cliente, bairro, cidade from endereco;
+
+select nome, sexo, bairro, cidade from cliente inner join endereco on idcliente = id_cliente where sexo = 'F';
+
+/*NOME, SEXO, EMAIL, TIPO, NUMERO*/
+select nome, sexo, email, tipo, numero
+from cliente
+inner join telefone
+on idcliente = id_cliente;
+
+/*Nome, sexo, bairro, cidade, tipo, numer*/
+
+select cliente.nome, cliente.sexo, endereco.bairro, endereco.cidade, telefone.tipo, telefone.numero 
+from cliente
+INNER JOIN endereco
+on cliente.idcliente = endereco.id_cliente
+inner JOIN telefone
+on cliente.idcliente = TELEFONE.id_cliente;
+
+
+select C.nome, C.sexo, E.bairro, E.cidade, T.tipo, T.numero 
+from cliente C
+INNER JOIN endereco E
+on C.idcliente = E.id_cliente
+inner JOIN telefone T
+on C.idcliente = T.id_cliente;
