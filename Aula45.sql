@@ -100,3 +100,6 @@ INNER JOIN endereco E
 on C.idcliente = E.id_cliente
 inner JOIN telefone T
 on C.idcliente = T.id_cliente;
+
+insert into cliente values (Null, 'Mariana', 'M', Null, '56789876543');
+insert into endereco values (Null, 'Rua A', 'Centro', 'São Paulo', 'SP', 7);
